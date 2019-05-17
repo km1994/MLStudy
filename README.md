@@ -348,3 +348,46 @@ CNN 算法实现以及封装
 ![训练过程界面](img/训练过程界面.png)
 
 ![测试结果界面](img/测试结果界面.png)
+
+### 十、Softmax numpy 实现
+
+#### 介绍
+
+Softmax 在机器学习和深度学习中有着非常广泛的应用。尤其在处理多分类（C > 2）问题，分类器最后的输出单元需要Softmax 函数进行数值处理。关于Softmax 函数的定义如下所示：
+
+![](../img/softmax.webp)
+
+其中，Vi 是分类器前级输出单元的输出。i 表示类别索引，总的类别个数为 C。Si 表示的是当前元素的指数与所有元素指数和的比值。Softmax 将多分类的输出数值转化为相对概率，更容易理解和比较。我们来看下面这个例子。
+
+一个多分类问题，C = 4。线性分类器模型最后输出层包含了四个输出值，分别是：
+
+![](../img/softmaxdemoval.webp)
+
+经过Softmax处理后，数值转化为相对概率：
+
+![](../img/softmaxval.webp)
+
+很明显，Softmax 的输出表征了不同类别之间的相对概率。我们可以清晰地看出，S1 = 0.8390，对应的概率最大，则更清晰地可以判断预测为第1类的可能性更大。Softmax 将连续数值转化成相对概率，更有利于我们理解。
+
+实际应用中，使用 Softmax 需要注意数值溢出的问题。因为有指数运算，如果 V 数值很大，经过指数运算后的数值往往可能有溢出的可能。所以，需要对 V 进行一些数值处理：即 V 中的每个元素减去 V 中的最大值。
+
+![](../img/softmax_max.webp)
+
+
+#### Requrements
+
+* Python (>=3.5)
+
+* numpy 
+
+
+#### 理论学习
+
+[Softmax 理论学习](https://mp.weixin.qq.com/s?__biz=MzAxMTU5Njg4NQ==&mid=100001925&idx=5&sn=20c5ead4f4b5f8f88c30043fb3703557&chksm=1bbfedbf2cc864a96b5fc4575e09294478f6f4cff65d654b8d775fed78766f80faf333d8ca08&scene=20&xtrack=1#rd)
+
+
+#### 算法代码链接
+
+[Softmax 算法实现](softmaxStudy/softmaxStudy.py)
+
+#### 运行效果
